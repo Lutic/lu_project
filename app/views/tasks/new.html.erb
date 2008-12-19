@@ -1,0 +1,15 @@
+﻿
+    
+        <% form_for @task do |form| %>
+        <p>Заголовок</p>
+        <%= form.text_field :name %>
+        <p>Описание задания</p>
+        <%= form.text_area :description %>
+        <p>Дата</p>
+        <%= form.date_select :duedate %>
+        <p>Исполняющий задание</p>
+        <%= collection_select :task, :user_id, @users, :id, :login %><br><br>
+        <%= form.submit %>
+        <% end %>
+       
+    

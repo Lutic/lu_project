@@ -1,0 +1,22 @@
+﻿
+    
+<% if not @current_user %>
+	<%= link_to 'Войти', login_users_path, :method => :put %>
+<% else %>
+    <%= link_to 'Выйти', logout_users_path, :method => :delete %>
+<% end %>
+    
+    <%= link_to 'Регистрация',:controller => 'users', :action => 'new' %><br>
+    <strong><%= link_to "Создать новое задание", :action => "new" %></strong><br>
+    <br>
+    Список заданий:<br><br>
+    <% @tasks.each do |task| %>
+       <div>
+          <div class="taskTitle"><%= h task.name %> | <%= h task.duedate %> 
+          </div>
+          <div class="taskBody"><em><%= h task.description %></em>
+          <div><small> Задание адресовано: <%=h task.user.login -%>`у </small></div><hr></div>
+        </div>
+    <% end %>
+    
+    
